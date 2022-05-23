@@ -1,8 +1,5 @@
 package enums;
 
-import javaClasses.Car;
-
-import java.util.HexFormat;
 
 public enum CarType implements VehicleTypeStructure {
     JEEP(50_000), SEDAN(30_000), CROSSOVER(40_000),

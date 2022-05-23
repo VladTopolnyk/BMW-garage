@@ -2,8 +2,7 @@ package javaClasses;
 
 import enums.Color;
 import enums.LorryType;
-import enums.VehicleType;
-import enums.VehicleTypeStructure;
+
 
 class Lorry extends Vehicle {
 

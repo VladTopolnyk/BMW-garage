@@ -1,9 +1,6 @@
 package javaClasses;
 
-
-import enums.CarType;
 import enums.Color;
-import enums.VehicleType;
 import enums.VehicleTypeStructure;
 
 public abstract class Vehicle {

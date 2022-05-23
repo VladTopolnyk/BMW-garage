@@ -1,7 +1,5 @@
 package javaClasses;
 
-import java.awt.event.KeyEvent;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 //Singleton
