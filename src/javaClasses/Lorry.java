@@ -1,21 +1,28 @@
 package javaClasses;
 
+import enums.Color;
+import enums.LorryType;
 import enums.VehicleType;
+import enums.VehicleTypeStructure;
 
-class Lorry extends Vehicle{
+class Lorry extends Vehicle {
 
+    private Color color;
+    private LorryType lorryType;
 
-    public Lorry(VehicleType vehicleType) {
+    public Lorry(Color color, LorryType lorryType) {
+        super(color, lorryType);
+        this.color = color;
+        this.lorryType = lorryType;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        return false;
-    }
-
 
     @Override
     public String toString() {
-        return null;
+        return "Lorry{" +
+                "price=" + lorryType.getPrice() +
+                ", lifting="+ lorryType.getLifting() +
+                ", color=" + color.name() +
+                ", carType=" + lorryType.name() +
+                '}';
     }
 }

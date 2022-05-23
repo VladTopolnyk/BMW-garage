@@ -36,7 +36,6 @@ public class Producer {
             case CAR -> showCarTypes();
             case LORRY -> showLorryTypes();
             case BICYCLE -> showBicycleTypes();
-            default -> throw new IllegalArgumentException();
         };
     }
 }

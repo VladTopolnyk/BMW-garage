@@ -2,34 +2,26 @@ package javaClasses;
 
 
 import enums.CarType;
+import enums.Color;
+
 
 public class Car extends Vehicle {
+
+    private Color color;
     private CarType carType;
 
-    public CarType getCarType() {
-        return carType;
-    }
-
-
-
-
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Car car = (Car) obj;
-        return car.carType == this.carType;
+    public Car(Color color, CarType carType) {
+        super(color, carType);
+        this.carType = carType;
+        this.color = color;
     }
 
     @Override
     public String toString() {
-        return null;
+        return "Car{" +
+                "price=" + carType.getPrice() +
+                ", color=" + color.name() +
+                ", carType=" + carType.name() +
+                '}';
     }
-
-
 }

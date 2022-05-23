@@ -1,25 +1,35 @@
 package javaClasses;
 
 public class Consumer {
-    private double cash;
+    private int cash;
+    private Vehicle vehicle;
     private String name;
-    private static int id = 0;
+    public static int id = 0;
+    private static int TIME_TO_VISIT = 5_000;
 
-    public Consumer(double cash, String name) {
+    public Consumer(String name, Vehicle vehicle) {
         id++;
-        this.cash = cash;
+        this.vehicle = vehicle;
         this.name = name;
+    }
+
+    public static int getTimeToVisit() {
+        return TIME_TO_VISIT;
     }
 
     public String getName() {
         return name;
     }
 
-    public double getCash() {
+    public int getCash() {
         return cash;
     }
 
     public static int getId() {
         return id;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 }

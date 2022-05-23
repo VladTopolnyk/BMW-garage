@@ -1,21 +1,26 @@
 package javaClasses;
 
-import enums.VehicleType;
+import enums.BicycleType;
+import enums.Color;
 
-class Bicycle extends Vehicle{
+class Bicycle extends Vehicle {
 
+    private Color color;
+    private BicycleType bicycleType;
 
-    public Bicycle(VehicleType vehicleType) {
-
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return false;
+    public Bicycle(Color color, BicycleType bicycleType) {
+        super(color, bicycleType);
+        this.color = color;
+        this.bicycleType = bicycleType;
     }
 
     @Override
     public String toString() {
-        return null;
+        return "Bicycle{" +
+                "price=" + bicycleType.getPrice() +
+                ", color=" + color.name() +
+                ", maxSpeed=" + bicycleType.getMaxSpeed() +
+                ", BicycleType=" + bicycleType.name() +
+                '}';
     }
 }

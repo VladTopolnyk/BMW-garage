@@ -1,41 +1,26 @@
 package javaClasses;
 
 
+import enums.CarType;
 import enums.Color;
 import enums.VehicleType;
+import enums.VehicleTypeStructure;
 
 public abstract class Vehicle {
-    public VehicleType getVehicleType() {
-        return vehicleType;
-    }
+    private Color color;
+    private VehicleTypeStructure vehicleType;
 
-    private VehicleType vehicleType;
-
-    double price;
-    double maxSpeed;
-    int createYear;
-    Color color;
-
-
-
-    public double getPrice() {
-        return price;
-    }
-
-    public double getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public int getCreateYear() {
-        return createYear;
+    public Vehicle(Color color, VehicleTypeStructure vehicleType){
+        this.color = color;
+        this.vehicleType = vehicleType;
     }
 
     public Color getColor() {
         return color;
     }
-
-
-    public abstract boolean equals(Object obj);
+    public VehicleTypeStructure getVehicleType() {
+        return vehicleType;
+    }
 
     public abstract String toString();
 }
