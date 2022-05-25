@@ -207,7 +207,9 @@ public class Garage {
         int iterator = 1;
         for (var vehicle : ablePriceList.values()) {
             builder.append(iterator + "-" + vehicle.toString() + " -->");
-            builder.append("You should make " + (100 - percents.get(0)) + "% discount to sell it!");
+            if ((100 - percents.get(0)) > 0)
+                builder.append("You should make " + (100 - percents.get(0)) + "% discount to sell it!");
+            else builder.append("You should not make discount to sell it!");
             percents.remove(0);
             builder.append("\n");
         }

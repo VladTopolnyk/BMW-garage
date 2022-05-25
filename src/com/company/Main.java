@@ -202,7 +202,7 @@ public class Main {
         try {
             Scanner sc = new Scanner(System.in);
             System.out.print(message);
-            String InputVehicleType = sc.nextLine();
+            String InputVehicleType = sc.nextLine().toUpperCase(Locale.ROOT);
             for (var type : values) {
                 if (InputVehicleType.equals(type.name())) return type;
             }
