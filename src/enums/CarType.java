@@ -11,16 +11,12 @@ public enum CarType implements VehicleTypeStructure {
         this.price = price;
     }
 
-    @Override
     public int getPrice() {
         return price;
     }
 
     @Override
     public String toString() {
-        String CAR_TYPE = "CarType:";
-        return CAR_TYPE + String.format("\n%s -> price = %d$".repeat(6),
-                JEEP.name(), JEEP.getPrice(), SEDAN.name(), SEDAN.getPrice(), CROSSOVER.name(), CROSSOVER.getPrice(),
-                HATCHBACK.name(), HATCHBACK.getPrice(), COUPE.name(), COUPE.getPrice(), UNIVERSAL.name(), UNIVERSAL.getPrice());
+        return this.name() + "--> price = " + price + '$';
     }
 }

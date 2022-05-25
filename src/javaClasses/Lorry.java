@@ -4,7 +4,7 @@ import enums.Color;
 import enums.LorryType;
 
 
-class Lorry extends Vehicle {
+public class Lorry extends Vehicle {
 
     private Color color;
     private LorryType lorryType;

@@ -3,7 +3,7 @@ package javaClasses;
 import enums.BicycleType;
 import enums.Color;
 
-class Bicycle extends Vehicle {
+public class Bicycle extends Vehicle {
 
     private Color color;
     private BicycleType bicycleType;

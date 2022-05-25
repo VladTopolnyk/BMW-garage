@@ -22,10 +22,8 @@ public enum BicycleType implements VehicleTypeStructure {
 
     @Override
     public String toString() {
-        String BICYCLE_TYPE = "BicycleType:";
-        return BICYCLE_TYPE + String.format("\n%s -> maxSpeed = %d, price = %d$".repeat(3),
-                ROAD_BIKE.name(), ROAD_BIKE.getMaxSpeed(), ROAD_BIKE.getPrice(),
-                MOUNTAIN_BIKE.name(), MOUNTAIN_BIKE.getMaxSpeed(), MOUNTAIN_BIKE.getPrice(),
-                BMX.name(), BMX.getMaxSpeed(), BMX.getPrice());
+        return this.name() +
+                "--> maxSpeed = " + maxSpeed + " ton" +
+                ", price = " + price + '$';
     }
 }

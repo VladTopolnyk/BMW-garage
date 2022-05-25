@@ -4,17 +4,25 @@ public class Consumer {
     private int cash;
     private Vehicle vehicle;
     private String name;
+    private int discount;
     public static int id = 0;
-    private static int TIME_TO_VISIT = 5_000;
 
     public Consumer(String name, Vehicle vehicle) {
         id++;
         this.vehicle = vehicle;
-        this.name = name;
+        this.name = name + id;
     }
 
-    public static int getTimeToVisit() {
-        return TIME_TO_VISIT;
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public void setCash(int cash) {
+        this.cash = cash;
     }
 
     public String getName() {
