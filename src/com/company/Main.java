@@ -168,12 +168,18 @@ public class Main {
     }
 
     private static int buyVehicle(Garage garage, Producer producer, VehicleFactory vehicleFactory) {
+
+        System.out.println("Your bank is " + garage.getBank());
+
+        System.out.println("Your bank is " + garage.getBank() + '$');
+
+        System.out.println("There are " + garage.getFree_places() + " free places");
         System.out.println("What type of Vehicle do you want to buy?");
         System.out.println("Vehicle Types: " + Arrays.toString(VehicleType.values()));
         VehicleType vehicleType = inputEnumType("Input vehicle type-->", VehicleType.values());
         System.out.println(producer.showTypesToSell(vehicleType));
         Vehicle vehicle = vehicleFactory.createVehicle(vehicleType);
-        if (!garage.buyVehicle(vehicle)) System.out.println("No buying!");
+        if (!garage.buyVehicle(vehicle)) System.out.println("You did not buy a place, so you can not buy a vehicle :(");
         if (garage.getFree_places() == garage.getPlaces()) buyVehicle(garage, producer, vehicleFactory);
         System.out.println("To buy another vehicles press ENTER\nOtherwise press another button!");
         if (!pressEnter()) return garage.getPlaces() - garage.getFree_places();
@@ -202,7 +208,7 @@ public class Main {
         try {
             Scanner sc = new Scanner(System.in);
             System.out.print(message);
-            String InputVehicleType = sc.nextLine().toUpperCase(Locale.ROOT);
+            String InputVehicleType = sc.nextLine().toUpperCase(Locale.ROOT).trim();
             for (var type : values) {
                 if (InputVehicleType.equals(type.name())) return type;
             }

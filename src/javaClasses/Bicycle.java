@@ -18,7 +18,7 @@ public class Bicycle extends Vehicle {
     public String toString() {
         return "Bicycle{" +
                 "price=" + bicycleType.getPrice() +
-                ", color=" + color.name() +
+                "$, color=" + color.name() +
                 ", maxSpeed=" + bicycleType.getMaxSpeed() +
                 ", BicycleType=" + bicycleType.name() +
                 '}';

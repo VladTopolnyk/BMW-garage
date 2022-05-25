@@ -20,7 +20,7 @@ public class Car extends Vehicle {
     public String toString() {
         return "Car{" +
                 "price=" + carType.getPrice() +
-                ", color=" + color.name() +
+                "$, color=" + color.name() +
                 ", carType=" + carType.name() +
                 '}';
     }

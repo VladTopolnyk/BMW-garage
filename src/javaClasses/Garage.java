@@ -38,6 +38,9 @@ public class Garage {
     }
 
     public static String ConsumerGone(Consumer consumer) {
+        if (consumer.getCash() == 0) return consumer.getName() +
+                " has gone because you don`t have variants for his cash = "
+                + consumer.getVehicle().getVehicleType().getPrice() + "$ :(";
         return consumer.getName() + " has gone because you don`t have variants for his cash = " + consumer.getCash() + "$ :(";
     }
 
@@ -77,6 +80,7 @@ public class Garage {
             free_places--;
             return true;
         }
+        System.out.println("You do not have enough money to buy this vehicle!");
         return false;
     }
 
@@ -164,10 +168,19 @@ public class Garage {
 
     private boolean hasNotVehicle(Consumer consumer) {
         Vehicle vehicle = consumer.getVehicle();
-        System.out.println("You don`t have a vehicle that consumer needs :(");
+        System.out.println("Consumer needs " + consumer.getVehicle());
+        System.out.println("You don`t have this one :(\nBut you can buy it!");
         if (bank >= vehicle.getVehicleType().getPrice()) {
             if (free_places <= 0) {
-                System.out.println("There are no free places\nTo buy a place press ENTER\n" +
+                if (bank < (vehicle.getVehicleType().getPrice() + PLACE_PRICE)) {
+                    System.out.println("There are no free places!\n(Vehicle price + place price) = "
+                            + (vehicle.getVehicleType().getPrice() + PLACE_PRICE) +
+                            "\nBut your bank is " + bank + "$\nSo you do not have enough money to buy a place and a vehicle!");
+                    System.out.println(ConsumerGone(consumer));
+                    return false;
+                }
+                System.out.println("There are no free places\nTo buy a vehicle you should buy a place!!!\n" +
+                        "press ENTER to buy a place\n" +
                         "Otherwise press another button but consumer would gone!!!");
                 if (!pressEnter()) {
                     System.out.println(ConsumerGone(consumer));
@@ -175,7 +188,8 @@ public class Garage {
                 }
                 buyPlace();
             }
-            System.out.println("But you can buy it!\n");
+            System.out.println("Your bank is " + bank + "$");
+            System.out.println("Vehicle price is " + vehicle.getVehicleType().getPrice() + "$");
             System.out.println("To buy a vehicle press ENTER\nOtherwise press another button!");
             if (pressEnter()) {
                 System.out.println("You bought " + vehicle);
@@ -212,6 +226,7 @@ public class Garage {
             else builder.append("You should not make discount to sell it!");
             percents.remove(0);
             builder.append("\n");
+            iterator++;
         }
         return builder.toString();
     }

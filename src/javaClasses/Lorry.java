@@ -19,7 +19,7 @@ public class Lorry extends Vehicle {
     public String toString() {
         return "Lorry{" +
                 "price=" + lorryType.getPrice() +
-                ", lifting="+ lorryType.getLifting() +
+                "$, lifting="+ lorryType.getLifting() +
                 ", color=" + color.name() +
                 ", carType=" + lorryType.name() +
                 '}';
