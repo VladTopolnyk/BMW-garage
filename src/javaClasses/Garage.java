@@ -91,8 +91,10 @@ public class Garage {
     private boolean containVehicle(Consumer consumer) {
         if (vehicles.contains(consumer.getVehicle())) return true;
         for (var item : vehicles) {
-            if (item.getColor() != consumer.getVehicle().getColor()) {
-                return changeColor(item, consumer);
+            if (item.getVehicleType() == consumer.getVehicle().getVehicleType()) {
+                if (item.getColor() != consumer.getVehicle().getColor()) {
+                    return changeColor(item, consumer);
+                }
             }
         }
         return false;
@@ -105,7 +107,7 @@ public class Garage {
         if (pressEnter()) {
             bank -= 1000;
             vehicle.setColor(consumer.getVehicle().getColor());
-            System.out.println("Now your bank is " + bank + "\nVehicle has repainted in " + vehicle.getColor() + " color!\n" + vehicle);
+            System.out.println("Now your bank is " + bank + "$\nVehicle has repainted in " + vehicle.getColor() + " color!\n" + vehicle);
             return true;
         }
         return false;

@@ -23,7 +23,7 @@ public enum BicycleType implements VehicleTypeStructure {
     @Override
     public String toString() {
         return this.name() +
-                "--> maxSpeed = " + maxSpeed + " ton" +
+                "--> maxSpeed = " + maxSpeed + " km/h" +
                 ", price = " + price + '$';
     }
 }

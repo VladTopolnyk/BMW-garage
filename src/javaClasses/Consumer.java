@@ -5,7 +5,7 @@ public class Consumer {
     private Vehicle vehicle;
     private String name;
     private int discount;
-    public static int id = 0;
+    private static int id = 0;
 
     public Consumer(String name, Vehicle vehicle) {
         id++;

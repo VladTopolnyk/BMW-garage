@@ -33,7 +33,7 @@ public class Main {
                 timeIsOver(garage);
                 break;
             } else {
-                Consumer consumer = new Consumer("Consumer", new Car(Color.RED, CarType.JEEP));
+                Consumer consumer = new Consumer("Consumer", generateVehicle());
                 System.out.println(consumer.getName());
                 if (consumer.getVehicle() == null) {
                     consumer.setCash(generateCash());
@@ -87,7 +87,6 @@ public class Main {
     private static int generateCash() {
         return new Random().nextInt(110_000 - 20_000) + 20_000;
     }
-
 
     private static void changeTimeToVisit(int discount, Garage garage) {
         switch (discount) {
@@ -223,6 +222,4 @@ public class Main {
             return inputEnumType(message, values);
         }
     }
-
-
 }
