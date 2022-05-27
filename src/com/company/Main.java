@@ -33,7 +33,7 @@ public class Main {
                 timeIsOver(garage);
                 break;
             } else {
-                Consumer consumer = new Consumer("Consumer", generateVehicle());
+                Consumer consumer = new Consumer("Consumer", new Car(Color.RED, CarType.JEEP));
                 System.out.println(consumer.getName());
                 if (consumer.getVehicle() == null) {
                     consumer.setCash(generateCash());
@@ -61,17 +61,26 @@ public class Main {
         }
     }
 
-    public static int inputDiscount() {
+    public static int inputDiscount(final int finalPrice, final int buyPrice) {
         try {
             System.out.print("Input discount-->");
             Scanner sc = new Scanner(System.in);
             int discount = sc.nextInt();
             sc.nextLine();
             if (discount < 1 || discount > 10) throw new IllegalArgumentException();
+            int currentPrice = finalPrice / 100 * discount;
+            if ((finalPrice - currentPrice) < buyPrice) {
+                System.out.println("if you use " + discount + "% discount you will lost " + (buyPrice - (finalPrice - currentPrice)) + "$" +
+                        "\nIf you want to change the discount - press ENTER!" +
+                        "\nOtherwise press another button");
+                if (pressEnter()) throw new IllegalAccessException();
+            }
             return discount;
         } catch (IllegalArgumentException e) {
             System.out.println("Wrong input! The highest discount is 10% and the lowest is 1%!");
-            return inputDiscount();
+            return inputDiscount(finalPrice, buyPrice);
+        } catch (IllegalAccessException e) {
+            return inputDiscount(finalPrice, buyPrice);
         }
     }
 
@@ -168,11 +177,7 @@ public class Main {
     }
 
     private static int buyVehicle(Garage garage, Producer producer, VehicleFactory vehicleFactory) {
-
-        System.out.println("Your bank is " + garage.getBank());
-
         System.out.println("Your bank is " + garage.getBank() + '$');
-
         System.out.println("There are " + garage.getFree_places() + " free places");
         System.out.println("What type of Vehicle do you want to buy?");
         System.out.println("Vehicle Types: " + Arrays.toString(VehicleType.values()));

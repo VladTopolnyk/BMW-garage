@@ -5,22 +5,19 @@ import enums.Color;
 
 public class Bicycle extends Vehicle {
 
-    private Color color;
-    private BicycleType bicycleType;
-
     public Bicycle(Color color, BicycleType bicycleType) {
         super(color, bicycleType);
         this.color = color;
-        this.bicycleType = bicycleType;
+        this.vehicleType = bicycleType;
+    }
+
+    @Override
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     @Override
     public String toString() {
-        return "Bicycle{" +
-                "price=" + bicycleType.getPrice() +
-                "$, color=" + color.name() +
-                ", maxSpeed=" + bicycleType.getMaxSpeed() +
-                ", BicycleType=" + bicycleType.name() +
-                '}';
+        return "Bicycle{" + vehicleType.toString() + ", color = " + color + '}';
     }
 }

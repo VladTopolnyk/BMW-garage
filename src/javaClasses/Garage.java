@@ -1,5 +1,9 @@
 package javaClasses;
 
+import enums.CarType;
+import enums.Color;
+
+import javax.swing.text.html.HTMLDocument;
 import java.util.*;
 
 import static com.company.Main.*;
@@ -84,10 +88,33 @@ public class Garage {
         return false;
     }
 
+    private boolean containVehicle(Consumer consumer) {
+        if (vehicles.contains(consumer.getVehicle())) return true;
+        for (var item : vehicles) {
+            if (item.getColor() != consumer.getVehicle().getColor()) {
+                return changeColor(item, consumer);
+            }
+        }
+        return false;
+    }
+
+    private boolean changeColor(Vehicle vehicle, Consumer consumer) {
+        System.out.println("You have the vehicle that " + consumer.getName() + " needs, " +
+                "but not in the color that " + consumer.getName() + " wants!\n" +
+                "You can repaint it for 1000$\nTo repaint press ENTER!\nOtherwise press another button!");
+        if (pressEnter()) {
+            bank -= 1000;
+            vehicle.setColor(consumer.getVehicle().getColor());
+            System.out.println("Now your bank is " + bank + "\nVehicle has repainted in " + vehicle.getColor() + " color!\n" + vehicle);
+            return true;
+        }
+        return false;
+    }
+
     public boolean sellVehicleNotNullCase(Consumer consumer) {
         Vehicle vehicle = consumer.getVehicle();
-        if (vehicles.contains(vehicle.getVehicleType())) {
-            int finalPrice = formFinalPrice(consumer.getVehicle(), consumer);
+        if (containVehicle(consumer)) {
+            int finalPrice = formFinalPrice(vehicle, consumer);
             hasVehicle(vehicle, finalPrice);
             return true;
         }
@@ -137,8 +164,8 @@ public class Garage {
                 "The larger the discount, the more often buyers will come," +
                 " but you will earn less on the sale\nIf you want to set discount press ENTER!\nOtherwise press another button");
         if (pressEnter()) {
-            discount = inputDiscount();
-            finalPrice -= finalPrice / 100 * discount;
+            discount = inputDiscount(finalPrice, vehicle.getVehicleType().getPrice());
+            finalPrice -= (finalPrice / 100) * discount;
         }
         consumer.setDiscount(discount);
         return finalPrice;
@@ -162,7 +189,7 @@ public class Garage {
         vehicles.remove(vehicle);
         free_places++;
         profit += finalPrice - vehicle.getVehicleType().getPrice();
-        System.out.println("You sold " + vehicle);
+        System.out.println("You sold " + vehicle + "for" + finalPrice + '$');
         System.out.println("Your profit from this deal is " + (finalPrice - vehicle.getVehicleType().getPrice()) + "$");
     }
 
@@ -252,7 +279,7 @@ public class Garage {
         Map<Integer, Vehicle> ablePrices = new TreeMap();
         for (var item : vehicles) {
             int price = item.getVehicleType().getPrice();
-            if ((price - (price / 100 * 10)) <= consumerCash) {
+            if (price <= consumerCash) {
                 int percent = consumerCash / price * 100;
                 ablePrices.put(percent, item);
             }
