@@ -11,9 +11,6 @@ public enum LorryType implements VehicleTypeStructure {
         this.price = price;
     }
 
-    public int getLifting() {
-        return lifting;
-    }
 
     @Override
     public int getPrice() {

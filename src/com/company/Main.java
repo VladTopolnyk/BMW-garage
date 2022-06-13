@@ -24,8 +24,7 @@ public class Main {
                 "The more vehicles, the more customers for whom you don’t have vehicles, or who came without specific variant" +
                 " will have options for buying\n");
         Producer producer = Producer.getInstance();
-        VehicleFactory vehicleFactory = new VehicleFactory();
-        buyVehicle(garage, producer, vehicleFactory);
+        buyVehicle(garage, producer);
 
         System.out.println(garage.getVehicles());
         while (true) {
@@ -175,19 +174,19 @@ public class Main {
         }
     }
 
-    private static int buyVehicle(Garage garage, Producer producer, VehicleFactory vehicleFactory) {
+    private static int buyVehicle(Garage garage, Producer producer) {
         System.out.println("Your bank is " + garage.getBank() + '$');
         System.out.println("There are " + garage.getFree_places() + " free places");
         System.out.println("What type of Vehicle do you want to buy?");
         System.out.println("Vehicle Types: " + Arrays.toString(VehicleType.values()));
         VehicleType vehicleType = inputEnumType("Input vehicle type-->", VehicleType.values());
         System.out.println(producer.showTypesToSell(vehicleType));
-        Vehicle vehicle = vehicleFactory.createVehicle(vehicleType);
+        Vehicle vehicle = VehicleFactory.createVehicle(vehicleType);
         if (!garage.buyVehicle(vehicle)) System.out.println("You did not buy a place, so you can not buy a vehicle :(");
-        if (garage.getFree_places() == garage.getPlaces()) buyVehicle(garage, producer, vehicleFactory);
+        if (garage.getFree_places() == garage.getPlaces()) buyVehicle(garage, producer);
         System.out.println("To buy another vehicles press ENTER\nOtherwise press another button!");
         if (!pressEnter()) return garage.getPlaces() - garage.getFree_places();
-        return buyVehicle(garage, producer, vehicleFactory);
+        return buyVehicle(garage, producer);
     }
 
     public static boolean pressEnter() {

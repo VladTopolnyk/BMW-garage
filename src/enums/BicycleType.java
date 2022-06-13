@@ -11,10 +11,6 @@ public enum BicycleType implements VehicleTypeStructure {
         this.price = price;
     }
 
-    public int getMaxSpeed() {
-        return maxSpeed;
-    }
-
     @Override
     public int getPrice() {
         return price;

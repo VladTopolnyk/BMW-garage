@@ -5,9 +5,10 @@ import enums.*;
 import java.util.Arrays;
 
 import static com.company.Main.inputEnumType;
-
+//Singleton
 public class VehicleFactory {
-    public Vehicle createVehicle(VehicleType vehicleType) {
+    private VehicleFactory(){}
+    public static Vehicle createVehicle(VehicleType vehicleType) {
         Vehicle vehicle = null;
         switch (vehicleType) {
             case CAR -> {

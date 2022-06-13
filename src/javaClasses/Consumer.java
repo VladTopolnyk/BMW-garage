@@ -33,10 +33,6 @@ public class Consumer {
         return cash;
     }
 
-    public static int getId() {
-        return id;
-    }
-
     public Vehicle getVehicle() {
         return vehicle;
     }
